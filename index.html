@@ -1,0 +1,3411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Anmol Gawale | Computer Engineering Student & Web Developer</title>
+
+<meta name="description"
+content="Portfolio of Anmol Gawale, a Computer Engineering student and Web Developer from Pune.">
+
+<meta name="theme-color" content="#08090b">
+
+<!-- Open Graph -->
+<meta property="og:title"
+content="Anmol Gawale | Computer Engineering Student & Web Developer">
+
+<meta property="og:description"
+content="Portfolio of Anmol Gawale, a Computer Engineering student and Web Developer from Pune.">
+
+<meta property="og:type" content="website">
+
+<meta property="og:image" content="assets/images/og-cover.jpg">
+
+<link rel="canonical" href="http://localhost/portfolio/">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap"
+rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+
+<!-- =========================================================
+     HERO LAYOUT OVERRIDES
+     ========================================================= -->
+
+<style>
+
+/* Frontend skills: keep JavaScript and React.js side-by-side */
+#skillsGridFrontend {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+@media (max-width: 760px) {
+    #skillsGridFrontend {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+:root {
+    --hero-blue: #3b82f6;
+    --hero-blue-soft: rgba(59,130,246,.16);
+    --hero-border: rgba(255,255,255,.10);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 120px 7vw 70px;
+
+    overflow: hidden;
+}
+
+
+/* 3D canvas remains in background */
+
+.hero-canvas-wrap {
+    position: absolute !important;
+    inset: 0 !important;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    opacity: .42;
+}
+
+
+/* Hero content becomes two columns */
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: min(1200px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: minmax(320px, .85fr) minmax(420px, 1.15fr);
+
+    align-items: center;
+
+    gap: clamp(50px, 7vw, 110px);
+
+    text-align: left !important;
+
+}
+
+
+/* =========================================================
+   PHOTO SIDE
+   ========================================================= */
+
+.hero-photo-area {
+
+    position: relative;
+
+    min-height: 520px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    isolation: isolate;
+
+}
+
+
+/* subtle blue light behind photo */
+
+.hero-photo-area::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 430px;
+
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37,99,235,.20) 0%,
+            rgba(37,99,235,.08) 38%,
+            transparent 72%
+        );
+
+    filter: blur(18px);
+
+    z-index: -2;
+
+    animation: photoAmbient 7s ease-in-out infinite;
+
+}
+
+
+/* rotating technical ring */
+
+.hero-photo-area::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 390px;
+
+    height: 390px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(59,130,246,.12);
+
+    border-top-color: rgba(59,130,246,.40);
+
+    border-right-color: rgba(59,130,246,.20);
+
+    animation: photoRing 18s linear infinite;
+
+    z-index: -1;
+
+}
+
+
+/* =========================================================
+   PHOTO FRAME
+   ========================================================= */
+
+.hero-photo-frame {
+
+    position: relative;
+
+    width: min(390px, 75vw);
+
+    aspect-ratio: 4 / 5;
+
+    padding: 7px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.15),
+            rgba(255,255,255,.035) 45%,
+            rgba(59,130,246,.14)
+        );
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.55),
+        0 0 45px rgba(37,99,235,.08),
+        inset 0 1px 0 rgba(255,255,255,.12);
+
+    backdrop-filter: blur(14px);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        box-shadow .5s ease;
+
+    animation: photoFloat 6s ease-in-out infinite;
+
+    overflow: hidden;
+}
+
+
+/* photo frame hover */
+
+.hero-photo-frame:hover {
+
+    transform:
+        perspective(900px)
+        rotateY(-4deg)
+        rotateX(2deg)
+        translateY(-7px)
+        scale(1.015);
+
+    box-shadow:
+        0 45px 100px rgba(0,0,0,.65),
+        0 0 60px rgba(37,99,235,.13),
+        inset 0 1px 0 rgba(255,255,255,.18);
+
+}
+
+
+/* actual photo */
+
+.hero-photo {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center top;
+
+    border-radius: 24px;
+
+    filter:
+        saturate(.92)
+        contrast(1.04);
+
+}
+
+
+/* dark glass overlay */
+
+.hero-photo-overlay {
+
+    position: absolute;
+
+    inset: 7px;
+
+    border-radius: 24px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.02) 35%,
+            rgba(4,8,15,.30) 100%
+        );
+
+}
+
+
+/* small professional label */
+
+.hero-photo-badge {
+
+    position: absolute;
+
+    left: 24px;
+
+    bottom: 24px;
+
+    padding: 9px 14px;
+
+    border-radius: 999px;
+
+    background: rgba(7,10,16,.72);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    backdrop-filter: blur(16px);
+
+    color: rgba(255,255,255,.80);
+
+    font-size: 11px;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
+
+}
+
+
+/* blue tiny indicator */
+
+.hero-photo-badge::before {
+
+    content: "";
+
+    display: inline-block;
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #3b82f6;
+
+    margin-right: 8px;
+
+    box-shadow: 0 0 12px rgba(59,130,246,.75);
+
+}
+
+
+/* =========================================================
+   TEXT SIDE
+   ========================================================= */
+
+.hero-text-area {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 680px;
+
+}
+
+
+/* eyebrow */
+
+.hero-eyebrow {
+
+    display: inline-flex !important;
+
+    align-items: center;
+
+    margin-bottom: 22px !important;
+
+    text-align: left !important;
+
+}
+
+
+/* title */
+
+.hero-title {
+
+    margin: 0 0 22px !important;
+
+    text-align: left !important;
+
+    line-height: .95 !important;
+
+    letter-spacing: -.055em !important;
+
+}
+
+
+/* title lines */
+
+.hero-title-line {
+
+    display: block;
+
+}
+
+
+/* accent */
+
+.hero-title .accent-word {
+
+    background:
+        linear-gradient(
+            100deg,
+            #3b82f6 0%,
+            #60a5fa 48%,
+            #2563eb 100%
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+
+/* subtitle */
+
+.hero-subheading {
+
+    max-width: 620px;
+
+    margin: 0 0 18px !important;
+
+    text-align: left !important;
+
+    font-size: clamp(18px, 2vw, 25px) !important;
+
+    line-height: 1.45 !important;
+
+    font-weight: 600 !important;
+
+}
+
+
+/* description */
+
+.hero-desc {
+
+    max-width: 570px;
+
+    margin: 0 0 32px !important;
+
+    text-align: left !important;
+
+    line-height: 1.75 !important;
+
+}
+
+
+/* buttons */
+
+.hero-actions {
+
+    justify-content: flex-start !important;
+
+    margin-top: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* =========================================================
+   PREMIUM BUTTONS
+   ========================================================= */
+
+.hero-actions .btn {
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+
+}
+
+
+.hero-actions .btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -120%;
+
+    width: 70%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.10),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left .7s ease;
+
+}
+
+
+.hero-actions .btn:hover::before {
+
+    left: 140%;
+
+}
+
+
+.hero-actions .btn:hover {
+
+    transform: translateY(-3px);
+
+}
+
+
+/* =========================================================
+   FLOATING 3D DETAIL
+   ========================================================= */
+
+.hero-floating-card {
+
+    position: absolute;
+
+    right: -25px;
+
+    bottom: 55px;
+
+    width: 105px;
+
+    height: 105px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 22px;
+
+    background:
+        rgba(10,15,24,.55);
+
+    border:
+        1px solid rgba(255,255,255,.09);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.40),
+        0 0 30px rgba(37,99,235,.08);
+
+    transform:
+        rotate(5deg);
+
+    animation: floatingCard 5s ease-in-out infinite;
+
+}
+
+
+.hero-floating-card strong {
+
+    font-size: 26px;
+
+    color: #e9eef8;
+
+}
+
+
+.hero-floating-card span {
+
+    margin-top: 4px;
+
+    font-size: 10px;
+
+    color: rgba(255,255,255,.48);
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes photoFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+
+}
+
+
+@keyframes photoAmbient {
+
+    0%,
+    100% {
+        transform: scale(.95);
+        opacity: .65;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes photoRing {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+@keyframes floatingCard {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(5deg);
+    }
+
+    50% {
+        transform: translateY(-13px) rotate(7deg);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+
+        padding:
+            125px
+            25px
+            70px;
+
+    }
+
+
+    .hero-content {
+
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        text-align: center !important;
+
+    }
+
+
+    .hero-photo-area {
+
+        min-height: auto;
+
+        order: 1;
+
+    }
+
+
+    .hero-text-area {
+
+        order: 2;
+
+        max-width: 700px;
+
+        margin: 0 auto;
+
+    }
+
+
+    .hero-photo-frame {
+
+        width: min(300px, 72vw);
+
+    }
+
+
+    .hero-photo-area::after {
+
+        width: 320px;
+
+        height: 320px;
+
+    }
+
+
+    .hero-photo-area::before {
+
+        width: 340px;
+
+        height: 340px;
+
+    }
+
+
+    .hero-title,
+    .hero-eyebrow,
+    .hero-subheading,
+    .hero-desc {
+
+        text-align: center !important;
+
+    }
+
+
+    .hero-eyebrow {
+
+        justify-content: center;
+
+    }
+
+
+    .hero-actions {
+
+        justify-content: center !important;
+
+    }
+
+
+    .hero-floating-card {
+
+        right: 5%;
+
+        bottom: 0;
+
+        transform: scale(.85);
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .hero {
+
+        padding-left: 18px;
+
+        padding-right: 18px;
+
+    }
+
+
+    .hero-photo-frame {
+
+        width: min(260px, 70vw);
+
+        border-radius: 24px;
+
+    }
+
+
+    .hero-photo {
+
+        border-radius: 18px;
+
+    }
+
+
+    .hero-photo-overlay {
+
+        border-radius: 18px;
+
+    }
+
+
+    .hero-title {
+
+        font-size: clamp(48px, 14vw, 76px) !important;
+
+    }
+
+
+    .hero-subheading {
+
+        font-size: 17px !important;
+
+    }
+
+
+    .hero-desc {
+
+        font-size: 14px !important;
+
+        line-height: 1.7 !important;
+
+    }
+
+
+    .hero-actions {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        width: 100%;
+
+    }
+
+
+    .hero-actions .btn {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+
+    .hero-floating-card {
+
+        display: none;
+
+    }
+
+}
+
+
+</style>
+
+
+<!-- =========================================================
+     FINAL HERO FIXES — 3D PHOTO / WIDE TEXT / SINGLE PORTFOLIO
+     ========================================================= -->
+<style>
+/* Use the transparent cutout photo instead of the white-background image. */
+.hero-main-photo {
+    width: auto !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+    background: transparent !important;
+    mix-blend-mode: normal !important;
+    filter: saturate(.96) contrast(1.05) brightness(1) drop-shadow(0 35px 45px rgba(0,0,0,.45)) !important;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 84%, transparent 100%) !important;
+    mask-image: linear-gradient(to bottom, #000 0%, #000 84%, transparent 100%) !important;
+    transform: translateZ(34px) scale(1.03) !important;
+    transform-origin: center bottom !important;
+}
+
+/* Wider cinematic hero so both text blocks sit near the edges. */
+.hero {
+    min-height: 100vh !important;
+    height: 100vh !important;
+    padding: 90px 2.5vw 48px !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+}
+
+/* Keep exactly ONE large PORTFOLIO word in the background. */
+.hero-background-text {
+    display: none !important;
+}
+.hero::before {
+    content: "PORTFOLIO" !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 49% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 0 !important;
+    white-space: nowrap !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    font-size: clamp(130px, 18vw, 315px) !important;
+    line-height: .78 !important;
+    font-weight: 900 !important;
+    letter-spacing: -.09em !important;
+    color: rgba(255,255,255,.035) !important;
+}
+.hero::after { content: none !important; }
+
+/* Make the existing 3-column structure fill the complete hero. */
+.hero-main {
+    width: min(1720px, 100%) !important;
+    min-height: 0 !important;
+    height: min(720px, calc(100vh - 145px)) !important;
+    grid-template-columns: minmax(430px, 1fr) minmax(430px, 560px) minmax(360px, 1fr) !important;
+    column-gap: clamp(30px, 4vw, 90px) !important;
+    align-items: center !important;
+}
+
+/* LEFT TEXT — larger and pushed toward the left edge. */
+.hero-left {
+    padding-left: 0 !important;
+    justify-self: start !important;
+    width: 100% !important;
+    max-width: 620px !important;
+}
+.hero-hi {
+    font-size: clamp(42px, 4vw, 70px) !important;
+    font-weight: 500 !important;
+}
+.hero-name-first {
+    font-size: clamp(76px, 7.4vw, 124px) !important;
+    line-height: .86 !important;
+}
+.hero-name-last {
+    font-size: clamp(70px, 6.7vw, 112px) !important;
+    line-height: .86 !important;
+}
+.hero-description {
+    width: min(500px, 100%) !important;
+    margin: 34px 0 30px !important;
+    font-size: clamp(14px, 1.05vw, 17px) !important;
+    line-height: 1.7 !important;
+}
+.hero-buttons { gap: 14px !important; }
+.hero-btn {
+    min-height: 48px !important;
+    padding: 0 21px !important;
+    font-size: 13px !important;
+    border-radius: 9px !important;
+}
+
+/* CENTER PHOTO — true 3D presentation. */
+.hero-center {
+    height: 100% !important;
+    min-height: 620px !important;
+    perspective: 1400px !important;
+    perspective-origin: 50% 50% !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    transform-style: preserve-3d !important;
+    overflow: visible !important;
+}
+.hero-photo-container {
+    width: min(500px, 34vw) !important;
+    height: min(650px, 78vh) !important;
+    overflow: visible !important;
+    transform-style: preserve-3d !important;
+    transform: rotateY(-7deg) rotateX(2deg) translateZ(0) !important;
+    transition: transform .65s cubic-bezier(.2,.8,.2,1), filter .65s ease !important;
+    filter: drop-shadow(0 45px 55px rgba(0,0,0,.35)) !important;
+}
+.hero-photo-container:hover {
+    transform: rotateY(-12deg) rotateX(4deg) translateY(-8px) translateZ(18px) !important;
+    filter: drop-shadow(0 55px 65px rgba(0,0,0,.5)) !important;
+}
+.hero-photo-glow {
+    width: 460px !important;
+    height: 460px !important;
+    top: 45% !important;
+    transform: translate(-50%, -50%) translateZ(-50px) !important;
+}
+
+/* A soft floor/shadow makes the cutout feel lifted from the page. */
+.hero-center::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 2%;
+    width: 310px;
+    height: 45px;
+    transform: translateX(-50%) translateZ(-80px);
+    border-radius: 50%;
+    background: rgba(0,0,0,.5);
+    filter: blur(24px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* RIGHT TEXT — larger and pushed toward the right edge. */
+.hero-right {
+    padding-right: 0 !important;
+    justify-self: end !important;
+    width: 100% !important;
+    max-width: 500px !important;
+}
+.hero-role-small {
+    margin-bottom: 17px !important;
+    font-size: clamp(11px, .8vw, 15px) !important;
+    letter-spacing: .08em !important;
+}
+.hero-role-accent,
+.hero-role-main {
+    font-size: clamp(54px, 5.2vw, 88px) !important;
+    line-height: .86 !important;
+}
+
+/* Bigger top navigation. */
+.nav-inner {
+    max-width: 1180px !important;
+    min-height: 58px !important;
+    padding: 9px 18px !important;
+}
+.nav-link {
+    padding: 10px 13px !important;
+    font-size: .78rem !important;
+}
+.nav-index { font-size: .65rem !important; }
+.nav-logo-mark {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 13px !important;
+}
+.nav-logo-text { font-size: 15px !important; }
+.theme-toggle {
+    width: 42px !important;
+    height: 42px !important;
+}
+
+/* Desktop spacing: let the hero breathe without creating horizontal scroll. */
+@media (min-width: 1440px) {
+    .hero-main {
+        grid-template-columns: minmax(500px, 1fr) minmax(470px, 560px) minmax(420px, 1fr) !important;
+    }
+    .hero-left { transform: translateX(-1.5vw); }
+    .hero-right { transform: translateX(1.5vw); }
+}
+
+/* Tablet/mobile: stack cleanly and keep the cutout transparent. */
+@media (max-width: 900px) {
+    .hero {
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 110px 20px 70px !important;
+    }
+    .hero-main {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        grid-template-columns: 1fr !important;
+        gap: 34px !important;
+    }
+    .hero-left,
+    .hero-right {
+        max-width: 700px !important;
+        justify-self: center !important;
+        transform: none !important;
+        text-align: center !important;
+    }
+    .hero-left { order: 1; }
+    .hero-center { order: 2; min-height: 500px !important; height: 560px !important; }
+    .hero-right { order: 3; justify-content: center !important; }
+    .hero-role { align-items: center !important; text-align: center !important; }
+    .hero-name-first { font-size: clamp(62px, 13vw, 100px) !important; }
+    .hero-name-last { font-size: clamp(58px, 12vw, 94px) !important; }
+    .hero-description { margin-left: auto !important; margin-right: auto !important; }
+    .hero-buttons { justify-content: center !important; }
+    .hero-photo-container {
+        width: min(390px, 78vw) !important;
+        height: 520px !important;
+    }
+    .nav-link { font-size: .72rem !important; }
+}
+
+@media (max-width: 600px) {
+    .hero { padding: 100px 16px 60px !important; }
+    .hero-main { gap: 26px !important; }
+    .hero-center { min-height: 390px !important; height: 440px !important; }
+    .hero-photo-container { width: min(310px, 82vw) !important; height: 430px !important; }
+    .hero-photo-glow { width: 300px !important; height: 300px !important; }
+    .hero-center::after { width: 220px; }
+    .hero-hi { font-size: 38px !important; }
+    .hero-name-first { font-size: clamp(56px, 15vw, 78px) !important; }
+    .hero-name-last { font-size: clamp(52px, 14vw, 74px) !important; }
+    .hero-role-accent,
+    .hero-role-main { font-size: clamp(44px, 12vw, 66px) !important; }
+    .hero-description { font-size: 14px !important; }
+    .hero-buttons { width: 100% !important; }
+    .hero-btn { flex: 1 1 auto !important; }
+    .hero::before { font-size: 95px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-photo-container,
+    .hero-main-photo { transform: none !important; }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   LINKEDIN SECTION
+   ========================================================= */
+
+.linkedin-profile-card {
+    padding: 34px;
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    flex-wrap: wrap;
+}
+
+.linkedin-profile-main {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex: 1 1 340px;
+    min-width: 280px;
+}
+
+.linkedin-avatar {
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #1683ff, #0d5fd1);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 750;
+    box-shadow:
+        0 15px 35px rgba(22,131,255,.18),
+        inset 0 1px 0 rgba(255,255,255,.25);
+    transition:
+        transform .35s var(--ease-out),
+        box-shadow .35s ease;
+}
+
+.linkedin-profile-info h3 {
+    margin-bottom: 5px;
+    font-size: 1.25rem;
+}
+
+.linkedin-profile-info p {
+    margin-bottom: 4px;
+    color: var(--text-dim);
+    font-size: .92rem;
+}
+
+.linkedin-profile-info span {
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: .72rem;
+}
+
+.linkedin-details {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(120px,1fr));
+    gap: 24px;
+    flex: 1 1 430px;
+    padding-left: 30px;
+    border-left: 1px solid var(--glass-2-border);
+}
+
+.linkedin-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.linkedin-detail-label {
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.linkedin-detail strong {
+    color: var(--text);
+    font-size: .88rem;
+    line-height: 1.45;
+    font-weight: 600;
+}
+
+.linkedin-action {
+    flex: 0 0 auto;
+}
+
+.linkedin-action .btn {
+    min-height: 48px;
+}
+
+.linkedin-profile-card:hover .linkedin-avatar {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+        0 18px 40px rgba(22,131,255,.24),
+        inset 0 1px 0 rgba(255,255,255,.28);
+}
+
+.linkedin-cta {
+    margin-top: 28px;
+    text-align: center;
+}
+
+.linkedin-cta p {
+    margin-bottom: 8px;
+    color: var(--text-dim);
+    font-size: .92rem;
+}
+
+.linkedin-text-link {
+    color: var(--accent-blue);
+    font-family: var(--font-mono);
+    font-size: .82rem;
+    transition: opacity .25s ease, transform .25s ease;
+}
+
+.linkedin-text-link:hover {
+    opacity: .75;
+}
+
+@media (max-width: 900px) {
+    .linkedin-profile-card {
+        align-items: flex-start;
+    }
+
+    .linkedin-details {
+        width: 100%;
+        padding-left: 0;
+        padding-top: 22px;
+        border-left: 0;
+        border-top: 1px solid var(--glass-2-border);
+    }
+
+    .linkedin-action {
+        width: 100%;
+    }
+
+    .linkedin-action .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .linkedin-profile-card {
+        padding: 24px;
+        flex-direction: column;
+    }
+
+    .linkedin-profile-main {
+        width: 100%;
+    }
+
+    .linkedin-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 17px;
+    }
+
+    .linkedin-details {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+</style>
+
+
+<style>
+/* Skills icon visibility: clean, consistent and clearly visible */
+.skill-icon-wrap {
+    display: grid !important;
+    place-items: center !important;
+    overflow: hidden;
+}
+
+.skill-svg-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    color: var(--accent-blue);
+    stroke: currentColor;
+}
+
+.skill-text-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    min-height: 26px;
+    font-family: var(--font-display);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--accent-blue);
+}
+
+.java-icon .skill-text-icon {
+    font-size: 0.52rem;
+    letter-spacing: -0.05em;
+}
+
+.python-icon .skill-text-icon {
+    font-size: 0.72rem;
+}
+
+#skillsGridProgramming {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 760px) {
+    #skillsGridProgramming {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+
+<style id="core-skills-inline-style">
+
+#skillsGridCore {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 760px) {
+    #skillsGridCore {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<style id="fiverr-inline-styles">
+.fiverr-avatar {
+    background: linear-gradient(145deg, #1dbf73, #118957) !important;
+}
+</style>
+
+<style id="react-inline-style">
+.react-icon {
+    font-size: 0.52rem !important;
+    letter-spacing: -0.05em !important;
+}
+</style>
+
+
+<style id="cms-inline-style">
+[data-cms-section][hidden], #cmsCustomSections [hidden] { display: none !important; }
+.cms-project-card { min-height: 100%; }
+.cms-project-card h3 { margin-bottom: 10px; }
+.cms-project-meta { display:flex; flex-wrap:wrap; gap:8px; margin: 14px 0; }
+.cms-project-meta span { font-size:.72rem; font-family:var(--font-mono); color:var(--text-faint); border:1px solid var(--glass-2-border); border-radius:999px; padding:6px 9px; }
+.cms-project-links { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+.cms-custom-content p { margin-bottom: 14px; }
+#skillsGridFrontend, #skillsGridProgramming, #skillsGridCore { min-height: 0; }
+</style>
+
+</head>
+
+
+<body data-theme="dark">
+
+
+<!-- =========================================================
+     PAGE LOADER
+     ========================================================= -->
+
+<div class="page-loader" id="pageLoader" aria-hidden="true">
+
+    <div class="page-loader-mark">AG</div>
+
+    <p class="page-loader-name">
+        ANMOL GAWALE
+    </p>
+
+    <div class="page-loader-bar">
+        <span class="page-loader-bar-fill"></span>
+    </div>
+
+</div>
+
+
+<!-- Skip link -->
+
+<a href="#main" class="skip-link">
+    Skip to content
+</a>
+
+
+<!-- Custom Cursor -->
+
+<div
+    class="cursor-dot"
+    id="cursorDot"
+    aria-hidden="true">
+</div>
+
+<div
+    class="cursor-ring"
+    id="cursorRing"
+    aria-hidden="true">
+</div>
+
+
+<!-- Scroll progress -->
+
+<div
+    class="scroll-progress"
+    id="scrollProgress"
+    aria-hidden="true">
+</div>
+
+
+<!-- =========================================================
+     AMBIENT BACKGROUND
+     ========================================================= -->
+
+<div
+    class="ambient-bg"
+    id="ambientBg"
+    aria-hidden="true">
+
+    <div class="ambient-base"></div>
+
+    <div class="ambient-orb ambient-orb-1"></div>
+
+    <div class="ambient-grid"></div>
+
+    <div
+        class="ambient-mouse-glow"
+        id="ambientMouseGlow">
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+     ========================================================= -->
+
+<header
+    class="navbar"
+    id="navbar">
+
+    <nav
+        class="nav-inner"
+        aria-label="Primary">
+
+
+        <a
+            href="#home"
+            class="nav-logo"
+            aria-label="Anmol Gawale — home">
+
+            <span class="nav-logo-mark">
+                AG
+            </span>
+
+            <span class="nav-logo-text">
+                anmol<span class="accent-text">.dev</span>
+            </span>
+
+        </a>
+
+
+        <ul
+            class="nav-links"
+            id="navLinks">
+
+            <li aria-hidden="true">
+                <span
+                    class="nav-indicator"
+                    id="navIndicator">
+                </span>
+            </li>
+
+            <li>
+                <a
+                    href="#home"
+                    class="nav-link"
+                    data-section="home"
+                    data-cms-nav="home">
+
+                    <span class="nav-index">
+                        00
+                    </span>
+
+                    Home
+
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#about"
+                    class="nav-link"
+                    data-section="about"
+                    data-cms-nav="about">
+
+                    <span class="nav-index">
+                        01
+                    </span>
+
+                    About
+
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#skills"
+                    class="nav-link"
+                    data-section="skills"
+                    data-cms-nav="skills">
+
+                    <span class="nav-index">
+                        02
+                    </span>
+
+                    Skills
+
+                </a>
+            </li>
+            <li>
+                <a
+                    href="#linkedin"
+                    class="nav-link"
+                    data-section="linkedin"
+                    data-cms-nav="linkedin">
+
+                    <span class="nav-index">
+                        03
+                    </span>
+
+                    LinkedIn
+
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#fiverr"
+                    class="nav-link"
+                    data-section="fiverr"
+                    data-cms-nav="fiverr">
+
+                    <span class="nav-index">
+                        04
+                    </span>
+
+                    Fiverr
+
+                </a>
+            </li>
+
+
+<li>
+                <a
+                    href="#github"
+                    class="nav-link"
+                    data-section="github"
+                    data-cms-nav="github">
+
+                    <span class="nav-index">
+                        05
+                    </span>
+
+                    GitHub
+
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#contact"
+                    class="nav-link"
+                    data-section="contact"
+                    data-cms-nav="contact">
+
+                    <span class="nav-index">
+                        06
+                    </span>
+
+                    Contact
+
+                </a>
+            </li>
+
+        </ul>
+
+
+        <div class="nav-actions">
+
+            <button
+                class="theme-toggle"
+                id="themeToggle"
+                aria-label="Toggle light and dark theme"
+                aria-pressed="false">
+
+                <svg
+                    class="icon-sun"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="4"/>
+
+                    <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+
+                </svg>
+
+
+                <svg
+                    class="icon-moon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path
+                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+
+                </svg>
+
+            </button>
+
+
+            <button
+                class="hamburger"
+                id="hamburger"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="navLinks">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main id="main">
+
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
+<section class="hero" id="home" data-cms-section="home">
+
+    <!-- Background -->
+    <div class="hero-background-text" aria-hidden="true">
+        PORTFOLIO
+    </div>
+
+    <div class="hero-glow hero-glow-left"></div>
+    <div class="hero-glow hero-glow-right"></div>
+
+    <!-- Hero Content -->
+    <div class="hero-main">
+
+        <!-- LEFT CONTENT -->
+        <div class="hero-left">
+
+            <div class="hero-intro">
+                <span class="hero-hi">Hi I'm</span>
+
+                <h1 class="hero-name">
+                    <span class="hero-name-first" data-cms="profile.name_first">Anmol</span>
+                    <span class="hero-name-last" data-cms="profile.name_last">Gawale</span>
+                </h1>
+            </div>
+
+
+            <p class="hero-description" data-cms="profile.hero_description">
+                I blend creativity and technology to build
+                modern, responsive and practical digital
+                experiences.
+            </p>
+
+
+            <!-- Buttons -->
+            <div class="hero-buttons">
+
+                <a
+                    href="assets/resume/Anmol-Gawale-Resume.pdf"
+                    data-cms-href="profile.resume"
+                    class="hero-btn hero-btn-primary"
+                    download
+                    data-cursor="link">
+
+                    <svg
+                        width="15"
+                        height="15"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2">
+
+                        <path d="M12 3v12"></path>
+                        <path d="m7 10 5 5 5-5"></path>
+                        <path d="M5 21h14"></path>
+
+                    </svg>
+
+                    Download Resume
+
+                </a>
+
+
+                
+
+            </div>
+
+        </div>
+
+
+        <!-- CENTER PHOTO -->
+        <div class="hero-center">
+
+            <div class="hero-photo-glow"></div>
+
+            <div class="hero-photo-container">
+
+                <img
+                    src="assets/images/profile.jpg"
+                    data-cms-src="profile.profile_image"
+                    alt="Anmol Gawale"
+                    class="hero-main-photo">
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT CONTENT -->
+        <div class="hero-right">
+
+            <div class="hero-role">
+
+                <span class="hero-role-small" data-cms="profile.role_small">
+                    COMPUTER ENGINEERING STUDENT
+                </span>
+
+                <span class="hero-role-accent" data-cms="profile.role_accent">
+                    WEB
+                </span>
+
+                <span class="hero-role-main" data-cms="profile.role_main">
+                    DEVELOPER
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Scroll Down -->
+    <a
+        href="#about"
+        class="hero-scroll"
+        aria-label="Scroll to About">
+
+        <span class="hero-scroll-icon">
+            ↓
+        </span>
+
+        <span>
+            SCROLL DOWN
+        </span>
+
+    </a>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+     ========================================================= -->
+
+<section
+    class="section"
+    id="about"
+    data-cms-section="about">
+
+    <div class="section-inner">
+
+        <p class="section-eyebrow">
+
+            <span class="section-index">
+                01
+            </span>
+
+            About
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            About
+            <span class="accent-gradient">
+                Me
+            </span>
+
+        </h2>
+
+
+        <div class="about-grid">
+
+            <div
+                class="about-text reveal">
+
+                <p data-cms="about.paragraph">
+
+                    I'm Anmol Gawale, a Computer Engineering
+                    student from Pune with a strong interest in
+                    web development and software development.
+                    I enjoy turning ideas into practical digital
+                    experiences and continuously improving my
+                    skills through hands-on projects and learning.
+
+                </p>
+
+            </div>
+
+
+            <div class="focus-cards reveal">
+
+
+                <div
+                    class="glass-card focus-card"
+                    data-glow>
+
+                    <span class="focus-card-label">
+                        Build
+                    </span>
+
+                    <p>
+                        Turning ideas into functional web experiences.
+                    </p>
+
+                    <span
+                        class="card-sheen"
+                        aria-hidden="true">
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="glass-card focus-card"
+                    data-glow>
+
+                    <span class="focus-card-label">
+                        Learn
+                    </span>
+
+                    <p>
+                        Exploring modern technologies and
+                        development practices.
+                    </p>
+
+                    <span
+                        class="card-sheen"
+                        aria-hidden="true">
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="glass-card focus-card"
+                    data-glow>
+
+                    <span class="focus-card-label">
+                        Improve
+                    </span>
+
+                    <p>
+                        Continuously refining technical and
+                        design skills.
+                    </p>
+
+                    <span
+                        class="card-sheen"
+                        aria-hidden="true">
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline reveal">
+
+            <div class="timeline-item">
+
+                <span class="timeline-year">
+                    2025 — 2029
+                </span>
+
+                <div class="timeline-content">
+
+                    <h3 data-cms="about.education_degree">
+                        Bachelor's Degree in Computer Engineering
+                    </h3>
+
+                    <p data-cms="about.education_college">
+                        Zeal College of Engineering, Pune
+                    </p>
+
+                    <span class="timeline-status" data-cms="about.education_status">
+                        Computer Engineering Student
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHAT I BUILD
+     ========================================================= -->
+
+<section
+    class="section"
+    id="what-i-build"
+    data-cms-section="what-i-build">
+
+    <div class="section-inner">
+
+        <p class="section-eyebrow">
+
+            <span class="section-index">
+                02
+            </span>
+
+            Focus
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            What I
+            <span class="accent-gradient">
+                Build
+            </span>
+
+        </h2>
+
+
+        <div class="build-grid">
+
+
+            <div
+                class="glass-card build-card reveal"
+                data-glow data-build-index="0">
+
+                <h3 data-cms-build-title="0">
+                    Web Experiences
+                </h3>
+
+                <p data-cms-build-desc="0">
+                    Modern responsive websites and interfaces.
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </div>
+
+
+            <div
+                class="glass-card build-card reveal"
+                data-glow data-build-index="1">
+
+                <h3 data-cms-build-title="1">
+                    Practical Applications
+                </h3>
+
+                <p data-cms-build-desc="1">
+                    Digital solutions focused on real-world problems.
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </div>
+
+
+            <div
+                class="glass-card build-card reveal"
+                data-glow data-build-index="2">
+
+                <h3 data-cms-build-title="2">
+                    Interactive Interfaces
+                </h3>
+
+                <p>
+                    Clean interfaces with thoughtful interactions
+                    and motion.
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SKILLS
+     ========================================================= -->
+
+<section
+    class="section"
+    id="skills"
+    data-cms-section="skills">
+
+    <div class="section-inner">
+
+        <p class="section-eyebrow">
+
+            <span class="section-index">
+                03
+            </span>
+
+            Skills
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            Technology
+            <span class="accent-gradient">
+                I Use
+            </span>
+
+        </h2>
+
+
+        <p class="section-lead reveal">
+
+            A focused, honest set of tools I actively use —
+            updated as I learn more.
+
+        </p>
+
+
+        <div class="skills-category reveal">
+
+            <h3 class="skills-category-title">
+                Frontend Development
+            </h3>
+
+        </div>
+
+
+        <div
+            class="skills-grid"
+            id="skillsGridFrontend">
+
+
+            <article
+                class="glass-card skill-card reveal"
+                data-glow>
+
+                <div class="skill-icon-wrap" aria-hidden="true">
+                    <svg class="skill-svg-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="M7.2 8.2 5.5 12l1.7 3.8M16.8 8.2l1.7 3.8-1.7 3.8M10 16l4-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <h3 class="skill-name" data-static-skill="html5">
+                    HTML5
+                </h3>
+
+                <span class="skill-category">
+                    Frontend
+                </span>
+
+                <p class="skill-role">
+                    Semantic structure and accessible markup.
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </article>
+
+
+            <article
+                class="glass-card skill-card reveal"
+                data-glow>
+
+                <div class="skill-icon-wrap" aria-hidden="true">
+                    <svg class="skill-svg-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 4 7 20M17 4l-2 16M4 9h16M3 15h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <h3 class="skill-name" data-static-skill="css3">
+                    CSS3
+                </h3>
+
+                <span class="skill-category">
+                    Frontend
+                </span>
+
+                <p class="skill-role">
+                    Responsive, modern interface styling.
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </article>
+
+
+            <article
+                class="glass-card skill-card reveal"
+                data-glow>
+
+                <div class="skill-icon-wrap" aria-hidden="true">
+                    <svg class="skill-svg-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M8.5 5.5 5 9l3.5 3.5M15.5 5.5 19 9l-3.5 3.5M14 4 10 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <h3 class="skill-name" data-static-skill="javascript">
+                    JavaScript
+                </h3>
+
+                <span class="skill-category">
+                    Frontend
+                </span>
+
+                <p class="skill-role">
+                    Interactivity and client-side logic.
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </article>
+
+
+            <!-- REACT.JS -->
+            <article
+                class="glass-card skill-card reveal"
+                data-glow>
+
+                <div class="skill-icon-wrap" aria-hidden="true">
+                    <span class="skill-text-icon react-icon">REACT</span>
+                </div>
+
+                <h3 class="skill-name" data-static-skill="react">
+                    React.js
+                </h3>
+
+                <span class="skill-category">
+                    Frontend
+                </span>
+
+                <p class="skill-role">
+                    Component-based UI development and modern web interfaces.
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </article>
+
+        </div>
+<div class="skills-category reveal">
+
+            <h3 class="skills-category-title">
+                Programming Languages
+            </h3>
+
+        </div>
+
+
+        <div
+            class="skills-grid"
+            id="skillsGridProgramming">
+
+
+            <article
+                class="glass-card skill-card reveal"
+                data-glow>
+
+                <div class="skill-icon-wrap java-icon" aria-hidden="true">
+                    <span class="skill-text-icon">JAVA</span>
+                </div>
+
+                <h3 class="skill-name" data-static-skill="java">
+                    Java
+                </h3>
+
+                <span class="skill-category">
+                    Programming
+                </span>
+
+                <p class="skill-role">
+                    Object-oriented programming and application development.
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </article>
+
+
+            <article
+                class="glass-card skill-card reveal"
+                data-glow>
+
+                <div class="skill-icon-wrap python-icon" aria-hidden="true">
+                    <span class="skill-text-icon">PY</span>
+                </div>
+
+                <h3 class="skill-name" data-static-skill="python">
+                    Python
+                </h3>
+
+                <span class="skill-category">
+                    Programming
+                </span>
+
+                <p class="skill-role">
+                    General-purpose programming and practical automation.
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </article>
+
+
+        </div>
+
+        <div class="skills-category reveal">
+            <h3 class="skills-category-title">
+                Computer Science / Core Skills
+            </h3>
+        </div>
+
+        <div
+            class="skills-grid"
+            id="skillsGridCore">
+
+            <article
+                class="glass-card skill-card reveal"
+                data-glow>
+
+                <div class="skill-icon-wrap" aria-hidden="true">
+                    <span class="skill-text-icon">DSA</span>
+                </div>
+
+                <h3 class="skill-name" data-static-skill="dsa">
+                    Data Structures &amp; Algorithms
+                </h3>
+
+                <span class="skill-category">
+                    Computer Science
+                </span>
+
+                <p class="skill-role">
+                    Problem solving, algorithms and efficient data organization.
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </article>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROJECTS — CMS CONTROLLED
+     ========================================================= -->
+<section class="section" id="projects" data-cms-section="projects" hidden>
+    <div class="section-inner">
+        <p class="section-eyebrow"><span class="section-index">04</span> Projects</p>
+        <h2 class="section-title">Selected <span class="accent-gradient">Projects</span></h2>
+        <p class="section-lead reveal">A growing collection of practical projects and experiments.</p>
+        <div class="build-grid" id="cmsProjectsGrid"></div>
+    </div>
+</section>
+
+<div id="cmsCustomSections"></div>
+
+<!-- =========================================================
+     LINKEDIN
+     ========================================================= -->
+
+<section
+    class="section"
+    id="linkedin"
+    data-cms-section="linkedin">
+
+    <div class="section-inner">
+
+        <p class="section-eyebrow">
+
+            <span class="section-index">
+                04
+            </span>
+
+            LinkedIn
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            Professional
+            <span class="accent-gradient">
+                Profile
+            </span>
+
+        </h2>
+
+
+        <p class="section-lead reveal">
+
+            Connect with me and explore my professional profile,
+            education and development interests.
+
+        </p>
+
+
+        <div
+            class="linkedin-profile-card glass-card reveal"
+            data-glow>
+
+
+            <!-- PROFILE HEADER -->
+
+            <div class="linkedin-profile-main">
+
+                <div class="linkedin-avatar">
+                    in
+                </div>
+
+
+                <div class="linkedin-profile-info">
+
+                    <h3>
+                        Anmol Gawale
+                    </h3>
+
+                    <p>
+                        Computer Engineering Student • Web Developer
+                    </p>
+
+                    <span>
+                        Pune, Maharashtra, India
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROFILE DETAILS -->
+
+            <div class="linkedin-details">
+
+
+                <div class="linkedin-detail">
+
+                    <span class="linkedin-detail-label">
+                        Education
+                    </span>
+
+                    <strong>
+                        Zeal College of Engineering Pune
+                    </strong>
+
+                </div>
+
+
+                <div class="linkedin-detail">
+
+                    <span class="linkedin-detail-label">
+                        Field
+                    </span>
+
+                    <strong>
+                        Computer Engineering
+                    </strong>
+
+                </div>
+
+
+                <div class="linkedin-detail">
+
+                    <span class="linkedin-detail-label">
+                        Focus
+                    </span>
+
+                    <strong>
+                        Web Development
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- VIEW PROFILE -->
+
+            <div class="linkedin-action">
+
+                <a
+                    href="https://www.linkedin.com/in/anmol-gawale-5751273a2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-glass"
+                    data-cursor="link">
+
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="currentColor">
+
+                        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/>
+
+                    </svg>
+
+                    <span>
+                        View LinkedIn Profile ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <span
+                class="card-sheen"
+                aria-hidden="true">
+            </span>
+
+        </div>
+
+
+        <!-- LINKEDIN CTA -->
+
+        <div class="linkedin-cta reveal">
+
+            <p>
+                Let's connect, collaborate and grow together.
+            </p>
+
+            <a
+                href="https://www.linkedin.com/in/anmol-gawale-5751273a2"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="linkedin-text-link">
+
+                linkedin.com/in/anmol-gawale ↗
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     FIVERR
+     ========================================================= -->
+
+<section
+    class="section"
+    id="fiverr"
+    data-cms-section="fiverr">
+
+    <div class="section-inner">
+
+        <p class="section-eyebrow">
+
+            <span class="section-index">
+                05
+            </span>
+
+            Fiverr
+
+        </p>
+
+        <h2 class="section-title">
+
+            Freelance
+            <span class="accent-gradient">
+                Profile
+            </span>
+
+        </h2>
+
+        <p class="section-lead reveal">
+
+            Explore my Fiverr profile for web development and
+            freelance opportunities.
+
+        </p>
+
+        <div
+            class="linkedin-profile-card glass-card reveal"
+            data-glow>
+
+            <div class="linkedin-profile-main">
+
+                <div class="linkedin-avatar fiverr-avatar">
+                    Fi
+                </div>
+
+                <div class="linkedin-profile-info">
+
+                    <h3>
+                        Anmol Gawale
+                    </h3>
+
+                    <p>
+                        Web Developer • Freelance Services
+                    </p>
+
+                    <span>
+                        Fiverr Professional Profile
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="linkedin-details">
+
+                <div class="linkedin-detail">
+
+                    <span class="linkedin-detail-label">
+                        Service
+                    </span>
+
+                    <strong>
+                        Web Development
+                    </strong>
+
+                </div>
+
+                <div class="linkedin-detail">
+
+                    <span class="linkedin-detail-label">
+                        Focus
+                    </span>
+
+                    <strong>
+                        Responsive Websites &amp; UI
+                    </strong>
+
+                </div>
+
+                <div class="linkedin-detail">
+
+                    <span class="linkedin-detail-label">
+                        Availability
+                    </span>
+
+                    <strong>
+                        Freelance Opportunities
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="linkedin-action">
+
+                <a
+                    href="https://fiverr.com/s/lr9yA9g"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-glass"
+                    data-cursor="link">
+
+                    <span>
+                        View Fiverr Profile ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+            <span
+                class="card-sheen"
+                aria-hidden="true">
+            </span>
+
+        </div>
+
+        <div class="linkedin-cta reveal">
+
+            <p>
+                Let's connect and work together.
+            </p>
+
+            <a
+                href="https://fiverr.com/s/lr9yA9g"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="linkedin-text-link">
+
+                fiverr.com/s/lr9yA9g ↗
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     GITHUB
+     ========================================================= -->
+
+<section
+    class="section"
+    id="github"
+    data-cms-section="github">
+
+    <div class="section-inner">
+
+        <p class="section-eyebrow">
+
+            <span class="section-index">
+                06
+            </span>
+
+            GitHub
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            Open Source &
+            <span class="accent-gradient">
+                GitHub
+            </span>
+
+        </h2>
+
+
+        <p class="section-lead reveal">
+
+            Explore my development work and public repositories.
+
+        </p>
+
+
+        <div
+            class="github-profile-card glass-card reveal"
+            id="githubProfileCard"
+            data-glow>
+
+            <div
+                class="github-profile-loading"
+                id="githubProfileLoading">
+
+                <span
+                    class="spinner"
+                    aria-hidden="true">
+                </span>
+
+                Loading GitHub profile…
+
+            </div>
+
+            <span
+                class="card-sheen"
+                aria-hidden="true">
+            </span>
+
+        </div>
+
+
+        <div
+            class="repos-grid"
+            id="reposGrid"
+            aria-live="polite">
+        </div>
+
+
+        <div
+            class="github-fallback"
+            id="githubFallback"
+            hidden>
+
+            <p>
+                GitHub repositories are temporarily unavailable.
+            </p>
+
+            <a
+                href="https://github.com/anmolgawale"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="github-fallback-link">
+
+                Visit GitHub ↗
+
+            </a>
+
+        </div>
+
+
+        <div class="github-cta reveal">
+
+            <a
+                href="https://github.com/anmolgawale"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary btn-glass"
+                data-cursor="link">
+
+                <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="currentColor">
+
+                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.15c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.34.96.1-.75.4-1.25.73-1.53-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.08.78 2.17v3.22c0 .31.21.66.79.55A10.52 10.52 0 0023.5 12c0-6.35-5.15-11.5-11.5-11.5z"/>
+
+                </svg>
+
+                <span>
+                    View GitHub Profile ↗
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="contrib-section reveal">
+
+            <h3 class="contrib-title">
+                Recent Activity
+            </h3>
+
+            <div
+                class="contrib-card glass-card"
+                id="contribCard"
+                data-glow>
+
+                <p class="contrib-placeholder">
+                    GitHub activity will appear here
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+     ========================================================= -->
+
+<section
+    class="section"
+    id="contact"
+    data-cms-section="contact">
+
+    <div class="section-inner">
+
+        <p class="section-eyebrow">
+
+            <span class="section-index">
+                07
+            </span>
+
+            Contact
+
+        </p>
+
+
+        <h2 class="section-title">
+
+            Have an
+            <span class="accent-gradient">
+                idea?
+            </span>
+
+        </h2>
+
+
+        <p class="contact-subheading reveal">
+            Let's build something meaningful.
+        </p>
+
+
+        <p class="section-lead reveal">
+
+            I'm always interested in learning,
+            building and exploring new opportunities.
+
+        </p>
+
+
+        <div class="contact-grid">
+
+
+            <div class="contact-info reveal">
+
+
+                <a
+                    class="contact-info-item"
+                    href="mailto:anmolgawale683@gmail.com"
+                    data-cursor="link">
+
+                    <span class="contact-info-icon">
+
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8">
+
+                            <rect
+                                x="2"
+                                y="4"
+                                width="20"
+                                height="16"
+                                rx="2"/>
+
+                            <path d="m2 7 10 6 10-6"/>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        anmolgawale683@gmail.com
+                    </span>
+
+                </a>
+
+
+                <div class="contact-info-item">
+
+                    <span class="contact-info-icon">
+
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8">
+
+                            <path
+                                d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11z"/>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Pune, India
+                    </span>
+
+                </div>
+
+
+                <a
+                    class="contact-info-item"
+                    href="https://github.com/anmolgawale"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor="link">
+
+                    <span class="contact-info-icon">
+
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="currentColor">
+
+                            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.15c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.34.96.1-.75.4-1.25.73-1.53-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.08.78 2.17v3.22c0 .31.21.66.79.55A10.52 10.52 0 0023.5 12c0-6.35-5.15-11.5-11.5-11.5z"/>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        github.com/anmolgawale
+                    </span>
+
+                </a>
+
+
+                <a
+                    class="contact-info-item"
+                    href="https://www.linkedin.com/in/anmol-gawale-5751273a2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor="link">
+
+                    <span class="contact-info-icon">
+
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="currentColor">
+
+                            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        linkedin.com/in/anmol-gawale
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="assets/resume/Anmol-Gawale-Resume.pdf"
+                    class="btn btn-ghost contact-resume-btn"
+                    id="contactResumeBtn"
+                    download
+                    data-cursor="link">
+
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2">
+
+                        <path
+                            d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/>
+
+                    </svg>
+
+                    <span>
+                        Download Resume
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+
+            <form
+                class="contact-form glass-card reveal"
+                id="contactForm"
+                data-glow
+                novalidate>
+
+                <input type="hidden" name="_subject" value="New Portfolio Contact — Anmol Gawale">
+                <input type="hidden" name="_template" value="table">
+
+
+                <div class="form-row">
+
+                    <label for="name">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        autocomplete="name"
+                        required>
+
+                    <span
+                        class="form-error"
+                        id="nameError"
+                        role="alert">
+                    </span>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        autocomplete="email"
+                        required>
+
+                    <span
+                        class="form-error"
+                        id="emailError"
+                        role="alert">
+                    </span>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        required>
+
+                    <span
+                        class="form-error"
+                        id="subjectError"
+                        role="alert">
+                    </span>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        required>
+                    </textarea>
+
+                    <span
+                        class="form-error"
+                        id="messageError"
+                        role="alert">
+                    </span>
+
+                </div>
+
+
+                <!-- Honeypot -->
+
+                <div
+                    class="form-honeypot"
+                    aria-hidden="true">
+
+                    <label for="website">
+                        Website
+                    </label>
+
+                    <input
+                        type="text"
+                        id="website"
+                        name="website"
+                        tabindex="-1"
+                        autocomplete="off">
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-glass form-submit"
+                    id="formSubmit">
+
+                    <span class="btn-label">
+                        Send Message →
+                    </span>
+
+                    <span
+                        class="btn-spinner"
+                        aria-hidden="true">
+                    </span>
+
+                </button>
+
+
+                <p
+                    class="form-status"
+                    id="formStatus"
+                    role="status"
+                    aria-live="polite">
+                </p>
+
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+
+        <div class="footer-brand">
+
+            <span class="footer-mark">
+                AG
+            </span>
+
+            <p class="footer-name">
+                Anmol Gawale
+            </p>
+
+        </div>
+
+
+        <div class="footer-socials">
+
+
+            <a
+                href="https://github.com/anmolgawale"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                data-cursor="link">
+
+                <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor">
+
+                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.15c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.34.96.1-.75.4-1.25.73-1.53-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.08.78 2.17v3.22c0 .31.21.66.79.55A10.52 10.52 0 0023.5 12c0-6.35-5.15-11.5-11.5-11.5z"/>
+
+                </svg>
+
+            </a>
+
+
+            <a
+                href="https://www.linkedin.com/in/anmol-gawale-5751273a2"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                data-cursor="link">
+
+                <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor">
+
+                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/>
+
+                </svg>
+
+            </a>
+
+
+            <a
+                href="mailto:anmolgawale683@gmail.com"
+                aria-label="Email"
+                data-cursor="link">
+
+                <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8">
+
+                    <rect
+                        x="2"
+                        y="4"
+                        width="20"
+                        height="16"
+                        rx="2"/>
+
+                    <path
+                        d="m2 7 10 6 10-6"/>
+
+                </svg>
+
+            </a>
+
+
+        </div>
+
+
+        <p class="footer-copy">
+
+            © 2026 Anmol Gawale
+
+        </p>
+
+
+    </div>
+
+</footer>
+
+
+<!-- Back to top -->
+
+<button
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Back to top">
+
+    <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2">
+
+        <path
+            d="M12 19V5M5 12l7-7 7 7"/>
+
+    </svg>
+
+</button>
+
+
+<!-- Toast -->
+
+<div
+    class="toast-stack"
+    id="toastStack"
+    aria-live="polite"
+    aria-atomic="true">
+</div>
+
+
+<!-- =========================================================
+     EMAILJS
+     ========================================================= -->
+
+
+
+
+<!-- =========================================================
+     EXISTING JAVASCRIPT
+     ========================================================= -->
+
+<script src="js/skills-data.js"></script>
+
+
+<script src="js/ambient-bg.js"></script>
+
+<script src="js/animations.js"></script>
+
+<script src="js/github.js"></script>
+
+<script src="js/hero-scene.js"></script>
+
+<script src="js/contact-emailjs.js"></script>
+
+<script src="js/cms.js"></script>
+<script src="js/main.js"></script>
+
+
+</body>
+</html>
