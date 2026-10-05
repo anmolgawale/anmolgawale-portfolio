@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Anmol Gawale | Admin Panel</title>
+  <link rel="stylesheet" href="admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">AG</span><span><strong>Anmol</strong><small>Portfolio Admin</small></span></div>
+      <nav id="nav">
+        <button class="nav-btn active" data-tab="overview">Overview</button>
+        <button class="nav-btn" data-tab="content">Site Content</button>
+        <button class="nav-btn" data-tab="skills">Skills</button>
+        <button class="nav-btn" data-tab="projects">Projects</button>
+        <button class="nav-btn" data-tab="social">Social Links</button>
+        <button class="nav-btn" data-tab="sections">Custom Sections</button>
+      </nav>
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><span class="eyebrow">ANMOL.GAWALE / CMS</span><h1 id="pageTitle">Dashboard</h1></div>
+        <div class="user-pill" id="userEmail">—</div>
+      </header>
+
+      <section id="loginView" class="login-card">
+        <div class="login-icon">AG</div>
+        <h2>Admin Login</h2>
+        <p>Sign in with your Supabase admin account.</p>
+        <form id="loginForm">
+          <label>Email<input id="loginEmail" type="email" autocomplete="email" required value="anmolgawale683@gmail.com"></label>
+          <label>Password<input id="loginPassword" type="password" autocomplete="current-password" required></label>
+          <button class="primary" type="submit">Sign in</button>
+          <div id="loginStatus" class="status"></div>
+        </form>
+      </section>
+
+      <section id="dashboardView" class="hidden">
+        <div id="overviewTab" class="tab-panel">
+          <div class="hero-panel"><span class="eyebrow">CONTROL CENTER</span><h2>Edit your portfolio without touching code.</h2><p>Use the sections on the left to manage projects, skills, links and content. Changes are saved directly to Supabase.</p></div>
+          <div class="stats-grid" id="statsGrid"></div>
+        </div>
+
+        <div id="contentTab" class="tab-panel hidden">
+          <div class="panel-head"><div><h2>Site Content</h2><p>Simple key/value content such as hero text, about text and labels.</p></div><button class="primary" id="addContentBtn">+ Add</button></div>
+          <div class="table-wrap"><table><thead><tr><th>Key</th><th>Value</th><th>Updated</th><th></th></tr></thead><tbody id="contentTable"></tbody></table></div>
+        </div>
+
+        <div id="skillsTab" class="tab-panel hidden">
+          <div class="panel-head"><div><h2>Skills</h2><p>Add, edit, hide or delete skills.</p></div><button class="primary" id="addSkillBtn">+ Add Skill</button></div>
+          <div id="skillsList" class="card-list"></div>
+        </div>
+
+        <div id="projectsTab" class="tab-panel hidden">
+          <div class="panel-head"><div><h2>Projects</h2><p>Manage portfolio projects and visibility.</p></div><button class="primary" id="addProjectBtn">+ Add Project</button></div>
+          <div id="projectsList" class="card-list"></div>
+        </div>
+
+        <div id="socialTab" class="tab-panel hidden">
+          <div class="panel-head"><div><h2>Social Links</h2><p>GitHub, LinkedIn, Fiverr and other public profiles.</p></div><button class="primary" id="addSocialBtn">+ Add Link</button></div>
+          <div id="socialList" class="card-list"></div>
+        </div>
+
+        <div id="sectionsTab" class="tab-panel hidden">
+          <div class="panel-head"><div><h2>Custom Sections</h2><p>Optional extra sections for your portfolio.</p></div><button class="primary" id="addSectionBtn">+ Add Section</button></div>
+          <div id="sectionsList" class="card-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden"><div class="modal-box"><button class="modal-close" id="modalClose">×</button><h3 id="modalTitle">Edit</h3><form id="modalForm"></form></div></div>
+  <div id="toast" class="toast"></div>
+  <script src="admin.js"></script>
+</body>
+</html>
