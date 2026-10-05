@@ -1060,10 +1060,6 @@ rel="stylesheet">
     font-size: 13px !important;
 }
 .nav-logo-text { font-size: 15px !important; }
-.theme-toggle {
-    width: 42px !important;
-    height: 42px !important;
-}
 
 /* Desktop spacing: let the hero breathe without creating horizontal scroll. */
 @media (min-width: 1440px) {
@@ -1356,19 +1352,6 @@ rel="stylesheet">
 </style>
 
 
-<style id="core-skills-inline-style">
-
-#skillsGridCore {
-    grid-template-columns: minmax(0, 1fr);
-}
-
-@media (max-width: 760px) {
-    #skillsGridCore {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
-
 <style id="fiverr-inline-styles">
 .fiverr-avatar {
     background: linear-gradient(145deg, #1dbf73, #118957) !important;
@@ -1380,18 +1363,6 @@ rel="stylesheet">
     font-size: 0.52rem !important;
     letter-spacing: -0.05em !important;
 }
-</style>
-
-
-<style id="cms-inline-style">
-[data-cms-section][hidden], #cmsCustomSections [hidden] { display: none !important; }
-.cms-project-card { min-height: 100%; }
-.cms-project-card h3 { margin-bottom: 10px; }
-.cms-project-meta { display:flex; flex-wrap:wrap; gap:8px; margin: 14px 0; }
-.cms-project-meta span { font-size:.72rem; font-family:var(--font-mono); color:var(--text-faint); border:1px solid var(--glass-2-border); border-radius:999px; padding:6px 9px; }
-.cms-project-links { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
-.cms-custom-content p { margin-bottom: 14px; }
-#skillsGridFrontend, #skillsGridProgramming, #skillsGridCore { min-height: 0; }
 </style>
 
 </head>
@@ -1517,8 +1488,7 @@ rel="stylesheet">
                 <a
                     href="#home"
                     class="nav-link"
-                    data-section="home"
-                    data-cms-nav="home">
+                    data-section="home">
 
                     <span class="nav-index">
                         00
@@ -1533,8 +1503,7 @@ rel="stylesheet">
                 <a
                     href="#about"
                     class="nav-link"
-                    data-section="about"
-                    data-cms-nav="about">
+                    data-section="about">
 
                     <span class="nav-index">
                         01
@@ -1549,8 +1518,7 @@ rel="stylesheet">
                 <a
                     href="#skills"
                     class="nav-link"
-                    data-section="skills"
-                    data-cms-nav="skills">
+                    data-section="skills">
 
                     <span class="nav-index">
                         02
@@ -1564,8 +1532,7 @@ rel="stylesheet">
                 <a
                     href="#linkedin"
                     class="nav-link"
-                    data-section="linkedin"
-                    data-cms-nav="linkedin">
+                    data-section="linkedin">
 
                     <span class="nav-index">
                         03
@@ -1580,8 +1547,7 @@ rel="stylesheet">
                 <a
                     href="#fiverr"
                     class="nav-link"
-                    data-section="fiverr"
-                    data-cms-nav="fiverr">
+                    data-section="fiverr">
 
                     <span class="nav-index">
                         04
@@ -1597,8 +1563,7 @@ rel="stylesheet">
                 <a
                     href="#github"
                     class="nav-link"
-                    data-section="github"
-                    data-cms-nav="github">
+                    data-section="github">
 
                     <span class="nav-index">
                         05
@@ -1613,8 +1578,7 @@ rel="stylesheet">
                 <a
                     href="#contact"
                     class="nav-link"
-                    data-section="contact"
-                    data-cms-nav="contact">
+                    data-section="contact">
 
                     <span class="nav-index">
                         06
@@ -1630,47 +1594,7 @@ rel="stylesheet">
 
         <div class="nav-actions">
 
-            <button
-                class="theme-toggle"
-                id="themeToggle"
-                aria-label="Toggle light and dark theme"
-                aria-pressed="false">
 
-                <svg
-                    class="icon-sun"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2">
-
-                    <circle
-                        cx="12"
-                        cy="12"
-                        r="4"/>
-
-                    <path
-                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-
-                </svg>
-
-
-                <svg
-                    class="icon-moon"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2">
-
-                    <path
-                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-
-                </svg>
-
-            </button>
 
 
             <button
@@ -1700,7 +1624,7 @@ rel="stylesheet">
      HERO
      ========================================================= -->
 
-<section class="hero" id="home" data-cms-section="home">
+<section class="hero" id="home">
 
     <!-- Background -->
     <div class="hero-background-text" aria-hidden="true">
@@ -1720,13 +1644,13 @@ rel="stylesheet">
                 <span class="hero-hi">Hi I'm</span>
 
                 <h1 class="hero-name">
-                    <span class="hero-name-first" data-cms="profile.name_first">Anmol</span>
-                    <span class="hero-name-last" data-cms="profile.name_last">Gawale</span>
+                    <span class="hero-name-first">Anmol</span>
+                    <span class="hero-name-last">Gawale</span>
                 </h1>
             </div>
 
 
-            <p class="hero-description" data-cms="profile.hero_description">
+            <p class="hero-description">
                 I blend creativity and technology to build
                 modern, responsive and practical digital
                 experiences.
@@ -1738,7 +1662,6 @@ rel="stylesheet">
 
                 <a
                     href="assets/resume/Anmol-Gawale-Resume.pdf"
-                    data-cms-href="profile.resume"
                     class="hero-btn hero-btn-primary"
                     download
                     data-cursor="link">
@@ -1778,7 +1701,6 @@ rel="stylesheet">
 
                 <img
                     src="assets/images/profile.jpg"
-                    data-cms-src="profile.profile_image"
                     alt="Anmol Gawale"
                     class="hero-main-photo">
 
@@ -1792,15 +1714,15 @@ rel="stylesheet">
 
             <div class="hero-role">
 
-                <span class="hero-role-small" data-cms="profile.role_small">
+                <span class="hero-role-small">
                     COMPUTER ENGINEERING STUDENT
                 </span>
 
-                <span class="hero-role-accent" data-cms="profile.role_accent">
+                <span class="hero-role-accent">
                     WEB
                 </span>
 
-                <span class="hero-role-main" data-cms="profile.role_main">
+                <span class="hero-role-main">
                     DEVELOPER
                 </span>
 
@@ -1836,8 +1758,7 @@ rel="stylesheet">
 
 <section
     class="section"
-    id="about"
-    data-cms-section="about">
+    id="about">
 
     <div class="section-inner">
 
@@ -1867,7 +1788,7 @@ rel="stylesheet">
             <div
                 class="about-text reveal">
 
-                <p data-cms="about.paragraph">
+                <p>
 
                     I'm Anmol Gawale, a Computer Engineering
                     student from Pune with a strong interest in
@@ -1960,15 +1881,15 @@ rel="stylesheet">
 
                 <div class="timeline-content">
 
-                    <h3 data-cms="about.education_degree">
+                    <h3>
                         Bachelor's Degree in Computer Engineering
                     </h3>
 
-                    <p data-cms="about.education_college">
+                    <p>
                         Zeal College of Engineering, Pune
                     </p>
 
-                    <span class="timeline-status" data-cms="about.education_status">
+                    <span class="timeline-status">
                         Computer Engineering Student
                     </span>
 
@@ -1989,8 +1910,7 @@ rel="stylesheet">
 
 <section
     class="section"
-    id="what-i-build"
-    data-cms-section="what-i-build">
+    id="what-i-build">
 
     <div class="section-inner">
 
@@ -2020,13 +1940,13 @@ rel="stylesheet">
 
             <div
                 class="glass-card build-card reveal"
-                data-glow data-build-index="0">
+                data-glow>
 
-                <h3 data-cms-build-title="0">
+                <h3>
                     Web Experiences
                 </h3>
 
-                <p data-cms-build-desc="0">
+                <p>
                     Modern responsive websites and interfaces.
                 </p>
 
@@ -2040,13 +1960,13 @@ rel="stylesheet">
 
             <div
                 class="glass-card build-card reveal"
-                data-glow data-build-index="1">
+                data-glow>
 
-                <h3 data-cms-build-title="1">
+                <h3>
                     Practical Applications
                 </h3>
 
-                <p data-cms-build-desc="1">
+                <p>
                     Digital solutions focused on real-world problems.
                 </p>
 
@@ -2060,9 +1980,9 @@ rel="stylesheet">
 
             <div
                 class="glass-card build-card reveal"
-                data-glow data-build-index="2">
+                data-glow>
 
-                <h3 data-cms-build-title="2">
+                <h3>
                     Interactive Interfaces
                 </h3>
 
@@ -2092,8 +2012,7 @@ rel="stylesheet">
 
 <section
     class="section"
-    id="skills"
-    data-cms-section="skills">
+    id="skills">
 
     <div class="section-inner">
 
@@ -2151,7 +2070,7 @@ rel="stylesheet">
                     </svg>
                 </div>
 
-                <h3 class="skill-name" data-static-skill="html5">
+                <h3 class="skill-name">
                     HTML5
                 </h3>
 
@@ -2181,7 +2100,7 @@ rel="stylesheet">
                     </svg>
                 </div>
 
-                <h3 class="skill-name" data-static-skill="css3">
+                <h3 class="skill-name">
                     CSS3
                 </h3>
 
@@ -2211,7 +2130,7 @@ rel="stylesheet">
                     </svg>
                 </div>
 
-                <h3 class="skill-name" data-static-skill="javascript">
+                <h3 class="skill-name">
                     JavaScript
                 </h3>
 
@@ -2240,7 +2159,7 @@ rel="stylesheet">
                     <span class="skill-text-icon react-icon">REACT</span>
                 </div>
 
-                <h3 class="skill-name" data-static-skill="react">
+                <h3 class="skill-name">
                     React.js
                 </h3>
 
@@ -2260,7 +2179,54 @@ rel="stylesheet">
             </article>
 
         </div>
-<div class="skills-category reveal">
+
+
+        <div class="skills-category reveal">
+
+            <h3 class="skills-category-title">
+                Backend Development
+            </h3>
+
+        </div>
+
+
+        <div
+            class="skills-grid"
+            id="skillsGridBackend">
+
+
+            <article
+                class="glass-card skill-card reveal"
+                data-glow>
+
+                <div class="skill-icon-wrap" aria-hidden="true">
+                    <span class="skill-text-icon">PHP</span>
+                </div>
+
+                <h3 class="skill-name">
+                    PHP
+                </h3>
+
+                <span class="skill-category">
+                    Backend
+                </span>
+
+                <p class="skill-role">
+                    Server-side logic and form handling.
+                </p>
+
+                <span
+                    class="card-sheen"
+                    aria-hidden="true">
+                </span>
+
+            </article>
+
+
+        </div>
+
+
+        <div class="skills-category reveal">
 
             <h3 class="skills-category-title">
                 Programming Languages
@@ -2282,7 +2248,7 @@ rel="stylesheet">
                     <span class="skill-text-icon">JAVA</span>
                 </div>
 
-                <h3 class="skill-name" data-static-skill="java">
+                <h3 class="skill-name">
                     Java
                 </h3>
 
@@ -2310,7 +2276,7 @@ rel="stylesheet">
                     <span class="skill-text-icon">PY</span>
                 </div>
 
-                <h3 class="skill-name" data-static-skill="python">
+                <h3 class="skill-name">
                     Python
                 </h3>
 
@@ -2332,65 +2298,10 @@ rel="stylesheet">
 
         </div>
 
-        <div class="skills-category reveal">
-            <h3 class="skills-category-title">
-                Computer Science / Core Skills
-            </h3>
-        </div>
-
-        <div
-            class="skills-grid"
-            id="skillsGridCore">
-
-            <article
-                class="glass-card skill-card reveal"
-                data-glow>
-
-                <div class="skill-icon-wrap" aria-hidden="true">
-                    <span class="skill-text-icon">DSA</span>
-                </div>
-
-                <h3 class="skill-name" data-static-skill="dsa">
-                    Data Structures &amp; Algorithms
-                </h3>
-
-                <span class="skill-category">
-                    Computer Science
-                </span>
-
-                <p class="skill-role">
-                    Problem solving, algorithms and efficient data organization.
-                </p>
-
-                <span
-                    class="card-sheen"
-                    aria-hidden="true">
-                </span>
-
-            </article>
-
-        </div>
-
-
     </div>
 
 </section>
 
-
-
-<!-- =========================================================
-     PROJECTS — CMS CONTROLLED
-     ========================================================= -->
-<section class="section" id="projects" data-cms-section="projects" hidden>
-    <div class="section-inner">
-        <p class="section-eyebrow"><span class="section-index">04</span> Projects</p>
-        <h2 class="section-title">Selected <span class="accent-gradient">Projects</span></h2>
-        <p class="section-lead reveal">A growing collection of practical projects and experiments.</p>
-        <div class="build-grid" id="cmsProjectsGrid"></div>
-    </div>
-</section>
-
-<div id="cmsCustomSections"></div>
 
 <!-- =========================================================
      LINKEDIN
@@ -2398,8 +2309,7 @@ rel="stylesheet">
 
 <section
     class="section"
-    id="linkedin"
-    data-cms-section="linkedin">
+    id="linkedin">
 
     <div class="section-inner">
 
@@ -2580,8 +2490,7 @@ rel="stylesheet">
 
 <section
     class="section"
-    id="fiverr"
-    data-cms-section="fiverr">
+    id="fiverr">
 
     <div class="section-inner">
 
@@ -2733,8 +2642,7 @@ rel="stylesheet">
 
 <section
     class="section"
-    id="github"
-    data-cms-section="github">
+    id="github">
 
     <div class="section-inner">
 
@@ -2884,8 +2792,7 @@ rel="stylesheet">
 
 <section
     class="section"
-    id="contact"
-    data-cms-section="contact">
+    id="contact">
 
     <div class="section-inner">
 
@@ -3403,8 +3310,28 @@ rel="stylesheet">
 
 <script src="js/contact-emailjs.js"></script>
 
-<script src="js/cms.js"></script>
 <script src="js/main.js"></script>
+
+<!-- Dark mode only: permanently disable light theme. -->
+<script>
+(function () {
+    try {
+        localStorage.removeItem('theme');
+        localStorage.removeItem('portfolio-theme');
+        localStorage.removeItem('themeMode');
+    } catch (e) {}
+
+    document.body.setAttribute('data-theme', 'dark');
+
+    const enforceDark = () => {
+        document.body.setAttribute('data-theme', 'dark');
+        document.documentElement.removeAttribute('data-theme');
+    };
+
+    enforceDark();
+    window.addEventListener('pageshow', enforceDark);
+})();
+</script>
 
 
 </body>
